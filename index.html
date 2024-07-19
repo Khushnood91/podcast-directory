@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Directory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Podcast Directory</h1>
+    </header>
+    <main>
+        <section id="controls">
+            <input type="text" id="search" placeholder="Search podcasts...">
+        </section>
+        <section id="podcast-list">
+            <div class="podcast">
+                <img  src="link-to-image1.jpg" alt="podcast Image 1">
+                <h2>Podcast Title 1</h2>
+                <p>Description of podcast 1. This is where you summarize the podcast content.</p>
+                <a href="link-to-podcast1.com" target="_blank">Listen Now</a>
+                <button class="delete">Delete</button>
+            </div>
+            <div class="podcast">
+                <img src="link-to-image2.jpg" alt="Podcast Image 2">
+                <h2>Podcast Title 2</h2>
+                <p>Description of podcast 2. This is where you summarize the podcast content.</p>
+                <a href="link-to-podcast2.com" target="_blank">Listen Now</a>
+                <button class="delete">Delete</button>
+            </div>
+            <div class="podcast">
+                <img src="link-to-image3.jpg" alt="Podcast Image 3">
+                <h2>Podcast Title 3</h2>
+                <p>Description of podcast 3. This is where you summarize the podcast content.</p>
+                <a href="link-to-podcast3.com" target="_blank">Listen Now</a>
+                <button class="delete">Delete</button>
+            </div>
+        </section>
+        <section id="add-podcast">
+            <h2>Add a New Podcast</h2>
+            <form id="podcast-form">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+                <label for="link">Link:</label>
+                <input type="url" id="link" name="link" required>
+                <label for="image">Image URL:</label>
+                <input type="url" id="image" name="image" required>
+                <button type="submit">Add Podcast</button>
+            </form>
+        </section>
+    </main>
+    <script src="script.js">
+      // script.js
+
+document.getElementById('podcast-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const link = document.getElementById('link').value;
+    const imageUrl = document.getElementById('image').value;
+
+    const podcastList = document.getElementById('podcast-list');
+
+    const podcast = document.createElement('div');
+    podcast.className = 'podcast';
+
+    const podcastImage = document.createElement('img');
+    podcastImage.src = imageUrl;
+    podcastImage.alt = 'Podcast Image';
+
+    const podcastTitle = document.createElement('h2');
+    podcastTitle.textContent = title;
+
+    const podcastDescription = document.createElement('p');
+    podcastDescription.textContent = description;
+
+    const podcastLink = document.createElement('a');
+    podcastLink.href = link;
+    podcastLink.target = '_blank';
+    podcastLink.textContent = 'Listen Now';
+
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'delete';
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function() {
+        podcast.remove();
+    });
+
+    podcast.appendChild(podcastImage);
+    podcast.appendChild(podcastTitle);
+    podcast.appendChild(podcastDescription);
+    podcast.appendChild(podcastLink);
+    podcast.appendChild(deleteButton);
+
+    podcastList.appendChild(podcast);
+
+    document.getElementById('podcast-form').reset();
+});
+
+document.getElementById('search').addEventListener('input', function(event) {
+    const searchTerm = event.target.value.toLowerCase();
+    const podcasts = document.querySelectorAll('.podcast');
+
+    podcasts.forEach(function(podcast) {
+        const title = podcast.querySelector('h2').textContent.toLowerCase();
+        const description = podcast.querySelector('p').textContent.toLowerCase();
+
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+            podcast.style.display = '';
+        } else {
+            podcast.style.display = 'none';
+        }
+    });
+});
+
+document.querySelectorAll('.delete').forEach(function(button) {
+    button.addEventListener('click', function() {
+        button.parentElement.remove();
+    });
+});
+    </script>
+</body>
+</html>

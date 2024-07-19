@@ -1,0 +1,121 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: cadetblue;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 1em 0;
+  text-align: center;
+}
+
+main {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+
+#controls {
+  margin-bottom: 2em;
+}
+
+#controls input {
+  padding: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.podcast {
+  background: #fff;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+}
+
+.podcast img {
+  width: 100px;
+  height: 100px;
+  margin-right: 1em;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.podcast h2 {
+  margin-top: 0;
+}
+
+.podcast a {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.podcast a:hover {
+  background: #555;
+}
+
+.podcast .delete {
+  margin-left: 1em;
+  padding: 0.5em 1em;
+  background: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.podcast .delete:hover {
+  background: #c9302c;
+}
+
+#add-podcast {
+  background: #fff;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-top: 2em;
+}
+
+#add-podcast form {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-podcast form label {
+  margin-top: 1em;
+}
+
+#add-podcast form input, #add-podcast form textarea {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 0.5em;
+}
+
+#add-podcast form button {
+  margin-top: 1em;
+  padding: 0.5em;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#add-podcast form button:hover {
+  background: #555;
+}
